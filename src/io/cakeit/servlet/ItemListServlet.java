@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import io.cakeit.entity.Item;
 import io.cakeit.util.DB;
@@ -26,11 +27,18 @@ public class ItemListServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
+		
+		HttpSession session=request.getSession();
+		if(session.getAttribute("islogin")==null) {
+			request.getRequestDispatcher("WEB-INF/pages/noSignUp.jsp").forward(request, response);
+		}
+		else {
+			DB db = new DB();
+			List<Item> items = db.getAllItems();
+			request.setAttribute("items", items);
+			request.getRequestDispatcher("WEB-INF/pages/ItemList.jsp").forward(request, response);
+		}
 
-		DB db = new DB();
-		List<Item> items = db.getAllItems();
-		request.setAttribute("items", items);
-		request.getRequestDispatcher("WEB-INF/pages/ItemList.jsp").forward(request, response);
 	}
 
 

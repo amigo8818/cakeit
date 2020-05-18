@@ -28,7 +28,7 @@ public class CommunityServlet extends HttpServlet {
 		DB db = new DB();
 		List<Article> articles = db.getAllArticles();
 		request.setAttribute("articles", articles);
-		request.getRequestDispatcher("WEB-INF/pages/Community.jsp").forward(request, response);
+		request.getRequestDispatcher("WEB-INF/pages/community.jsp").forward(request, response);
 	}
 
 	
