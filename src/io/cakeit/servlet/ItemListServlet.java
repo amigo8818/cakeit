@@ -13,36 +13,32 @@ import javax.servlet.http.HttpSession;
 import io.cakeit.entity.Item;
 import io.cakeit.util.DB;
 
-
 @WebServlet("/ItemList")
 public class ItemListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
 
-    public ItemListServlet() {
-        super();
+	public ItemListServlet() {
+		super();
 
-    }
+	}
 
-
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+
 		
-		HttpSession session=request.getSession();
-		if(session.getAttribute("islogin")==null) {
+		HttpSession session = request.getSession();
+		if (session.getAttribute("islogin") == null) {
 			request.getRequestDispatcher("WEB-INF/pages/noSignUp.jsp").forward(request, response);
-		}
-		else {
+		} else {
+
 			DB db = new DB();
 			List<Item> items = db.getAllItems();
 			request.setAttribute("items", items);
 			request.getRequestDispatcher("WEB-INF/pages/ItemList.jsp").forward(request, response);
 		}
-
 	}
 
-
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 	}
