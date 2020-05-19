@@ -173,7 +173,7 @@ h2 {
 			</dl>
 		</div>
 </form>
-<h1>订购成功！</h1>
+
 <a href="main">Back</a>
 </body>
 <script language="javascript">
