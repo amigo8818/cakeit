@@ -10,9 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import io.cakeit.entity.Cart;
-import io.cakeit.entity.Item;
-import io.cakeit.util.DB;
+
 
 @WebServlet("/CheckOut")
 public class CheckOutServlet extends HttpServlet {
@@ -32,7 +30,6 @@ public class CheckOutServlet extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-	
 		
 		doGet(request, response);
 	}
